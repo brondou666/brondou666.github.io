@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | 个人博客</title>
+  <title>个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="JAVA,J2EE,Spring,后端,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
-<meta property="og:type" content="website">
+  <meta name="description" content="Spring手册阅读笔记Bean的装配和容器,返回这个环境实例化容器的时候 12new ClassPathXmlApplicationContext(        new String[] &amp;#123;&quot;services.xml&quot;, &quot;daos.xml&quot;&amp;#125;);  可以填入数组,来引入多个配置文件给构造器,来创建上下文 引入外部资源文件:可以引入  注意文件必须是完全有效的XML bea">
+<meta name="keywords" content="JAVA,J2EE,Spring,后端,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
+<meta property="og:type" content="article">
 <meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/27/Spring手册笔记/index.html">
 <meta property="og:site_name" content="个人博客">
+<meta property="og:description" content="Spring手册阅读笔记Bean的装配和容器,返回这个环境实例化容器的时候 12new ClassPathXmlApplicationContext(        new String[] &amp;#123;&quot;services.xml&quot;, &quot;daos.xml&quot;&amp;#125;);  可以填入数组,来引入多个配置文件给构造器,来创建上下文 引入外部资源文件:可以引入  注意文件必须是完全有效的XML bea">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-27T03:45:37.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客">
+<meta name="twitter:description" content="Spring手册阅读笔记Bean的装配和容器,返回这个环境实例化容器的时候 12new ClassPathXmlApplicationContext(        new String[] &amp;#123;&quot;services.xml&quot;, &quot;daos.xml&quot;&amp;#125;);  可以填入数组,来引入多个配置文件给构造器,来创建上下文 引入外部资源文件:可以引入  注意文件必须是完全有效的XML bea">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -155,160 +159,193 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spring手册笔记" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Spring手册阅读笔记"><a href="#Spring手册阅读笔记" class="headerlink" title="Spring手册阅读笔记"></a>Spring手册阅读笔记</h1><h3 id="Bean的装配和容器-返回这个环境"><a href="#Bean的装配和容器-返回这个环境" class="headerlink" title="Bean的装配和容器,返回这个环境"></a>Bean的装配和容器,返回这个环境</h3><p>实例化容器的时候</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> ClassPathXmlApplicationContext(</span><br><span class="line">        <span class="keyword">new</span> String[] &#123;<span class="string">"services.xml"</span>, <span class="string">"daos.xml"</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>可以填入数组,来引入多个配置文件给构造器,来创建上下文</p>
+<p>引入外部资源文件:<import>可以引入</import></p>
+<p><code></code> 注意文件必须是完全有效的XML bean定义文件，且根节点必须为 <code>&lt;beans/&gt;</code> 元素。</p>
+<p>Bean的管理通过bean Definition接口来定义相关信息,例如类的作用于,是否是主装配类,单双例…,详细信息可阅读源码<code>org.springframework.beans.factory.config</code></p>
+<p><code>XXXBeanFactory</code> 的相关实现可以将类注册到容器中</p>
+<p><code>id</code>在当前IoC容器中必须唯一。如果 一个bean有多个id，那么其他的id在本质上将被认为是别名。可以在<code>name</code>属性中使用逗号、 冒号或者空格将多个id分隔</p>
+<h4 id="bean的别名"><a href="#bean的别名" class="headerlink" title="bean的别名"></a>bean的别名<alias></alias></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;alias name=<span class="string">"本类名"</span> alias=<span class="string">"别名"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="实例化Bean"><a href="#实例化Bean" class="headerlink" title="实例化Bean"></a>实例化Bean</h4><p>bean标签的class属性的用途:</p>
+<p>1.直接通过反射构造器获得该类bean</p>
+<p>2.极少情况是通过调用类的静态static修饰的工厂,直接获得bean,此时的class可以直接指向静态工厂的类,</p>
+<ul>
+<li>内部类名:主类$内部类,的方式定义内部类名</li>
+</ul>
+<ol>
+<li><p>构造器实例化</p>
+<p>提供一个无参构造器创建标签</p>
+</li>
+<li><p>静态工厂方法实例化</p>
+<p>在类的内部指定一个static修饰的方法,<bean factory-method="返回实例的方法名"></bean></p>
+</li>
+<li><p>实例工厂方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">"exampleBean"</span></span><br><span class="line">      factory-bean=<span class="string">"工厂类"</span></span><br><span class="line">      factory-method=<span class="string">"工厂方法"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>是由工厂bean自己来管理以及通过依 赖注入(DI)来进行配置。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/source/assets/myheadfile.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/27/Spring手册笔记/" class="archive-article-date">
-  	<time datetime="2019-07-27T01:29:33.424Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-27</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/27/Spring手册笔记/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/23/Spring源码深度解析/" class="archive-article-date">
-  	<time datetime="2019-07-23T13:46:06.854Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-23</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/22/2019-7-23/" class="archive-article-date">
-  	<time datetime="2019-07-22T13:28:41.279Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/23/Spring源码深度解析/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/17/BookManager/" class="archive-article-date">
-  	<time datetime="2019-07-17T15:18:23.745Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-17</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/12/我的第一个博客/" class="archive-article-date">
-  	<time datetime="2019-07-12T13:40:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
-</a>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring手册阅读笔记"><span class="toc-number">1.</span> <span class="toc-text">Spring手册阅读笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bean的装配和容器-返回这个环境"><span class="toc-number">1.0.1.</span> <span class="toc-text">Bean的装配和容器,返回这个环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bean的别名"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">bean的别名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实例化Bean"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">实例化Bean</span></a></li></ol></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-    	 
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/12/我的第一个博客/">我的第一个博客</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/12/hello-world/" class="archive-article-date">
-  	<time datetime="2019-07-12T13:35:18.148Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/12/hello-world/">学习心得</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -331,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
