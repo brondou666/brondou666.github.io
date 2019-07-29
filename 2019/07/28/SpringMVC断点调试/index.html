@@ -8,20 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="具体如何学习spring? 1.课程文档 要熟悉, 2.看雷神的视频,源码部分先看一遍 3.,然后跟着走一遍,自己总结一遍,看CSDN上的spring源码学习的专栏有一个ieflex的人讲的不错 4.在完全听懂雷神后,再去尝试读一些书籍. Spring注解汇总 AOP使用和原理注解:  Aspect 将当前类定义为切面类  @Before  @After  @AfterReturning  aft">
+  <meta name="description" content="SpringMVC断点调试为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现).">
 <meta name="keywords" content="JAVA,J2EE,Spring,后端,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
 <meta property="og:type" content="article">
 <meta property="og:title" content="个人博客">
-<meta property="og:url" content="http://yoursite.com/2019/07/23/Spring源码深度解析/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="具体如何学习spring? 1.课程文档 要熟悉, 2.看雷神的视频,源码部分先看一遍 3.,然后跟着走一遍,自己总结一遍,看CSDN上的spring源码学习的专栏有一个ieflex的人讲的不错 4.在完全听懂雷神后,再去尝试读一些书籍. Spring注解汇总 AOP使用和原理注解:  Aspect 将当前类定义为切面类  @Before  @After  @AfterReturning  aft">
+<meta property="og:description" content="SpringMVC断点调试为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现).">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/07/23/Spring源码深度解析/img%5CSpring%E6%B3%A8%E8%A7%A3%E6%80%BB%E7%BB%93.png">
-<meta property="og:updated_time" content="2019-07-27T02:56:06.778Z">
+<meta property="og:updated_time" content="2019-07-28T11:54:42.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客">
-<meta name="twitter:description" content="具体如何学习spring? 1.课程文档 要熟悉, 2.看雷神的视频,源码部分先看一遍 3.,然后跟着走一遍,自己总结一遍,看CSDN上的spring源码学习的专栏有一个ieflex的人讲的不错 4.在完全听懂雷神后,再去尝试读一些书籍. Spring注解汇总 AOP使用和原理注解:  Aspect 将当前类定义为切面类  @Before  @After  @AfterReturning  aft">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/23/Spring源码深度解析/img%5CSpring%E6%B3%A8%E8%A7%A3%E6%80%BB%E7%BB%93.png">
+<meta name="twitter:description" content="SpringMVC断点调试为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现).">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -161,79 +159,12 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Spring源码深度解析" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-SpringMVC断点调试" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>具体如何学习spring?</p>
-<p>1.课程文档 要熟悉,</p>
-<p>2.看雷神的视频,源码部分先看一遍</p>
-<p>3.,然后跟着走一遍,自己总结一遍,看CSDN上的spring源码学习的专栏有一个ieflex的人讲的不错</p>
-<p>4.在完全听懂雷神后,再去尝试读一些书籍.</p>
-<h3 id="Spring注解汇总"><a href="#Spring注解汇总" class="headerlink" title="Spring注解汇总"></a>Spring注解汇总</h3><p><img src="img%5CSpring%E6%B3%A8%E8%A7%A3%E6%80%BB%E7%BB%93.png" alt></p>
-<h3 id="AOP使用和原理"><a href="#AOP使用和原理" class="headerlink" title="AOP使用和原理"></a>AOP使用和原理</h3><p>注解:</p>
-<ul>
-<li><p>Aspect 将当前类定义为切面类</p>
-</li>
-<li><p>@Before</p>
-</li>
-<li><p>@After</p>
-</li>
-<li><p>@AfterReturning</p>
-</li>
-<li><p>afterThrowing</p>
-</li>
-<li><p>Pointcut(切入点表达式)  抽取切点,供其它类和方法使用</p>
-<p><a href="aop:aspect-autoproxy/" target="_blank" rel="noopener">aop:aspect-autoproxy/</a>在配置文件中配置注解切面</p>
-<p>@EnableAspctJAutoProxy  配置类中开启注解aop</p>
-<p>参数中加上joinpoint(必须出现在第一位)可以拿到方法的参数,方法名等</p>
-<h5 id="自定义扫描规则"><a href="#自定义扫描规则" class="headerlink" title="自定义扫描规则"></a>自定义扫描规则</h5></li>
-</ul>
-<p>@ComponentScan参数中可以定义扫描规则(排除)ComponentScans定义多个扫描规则,支持正则,aspectJ表达式</p>
-<p>自定义过滤规则</p>
-<h5 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h5><p>@lazy 将单例对象的创建时间延迟到使用时</p>
-<h4 id="添加验证注解"><a href="#添加验证注解" class="headerlink" title="添加验证注解"></a>添加验证注解</h4><p>@Conditional ({条件数组})按照一定的条件进行判断,满足条件就加载bean,通过实现conditions接口中的方法matches进行判断,判断是否存在某些bean,是否处于某些环境下…….注册某些bean等,springboot自动配置的关键,使用范围是方法和类</p>
-<h5 id="组件引入注解"><a href="#组件引入注解" class="headerlink" title="组件引入注解"></a>组件引入注解</h5><p>@Import导入组件:({bean.class,bean2.class})默认ID是组件的全类名,springboot大量使用</p>
-<p>接口:</p>
-<ul>
-<li>mportSelector,返回导入组件的全类名数组</li>
-</ul>
-<p>使用:ImportSelector实现该接口,将实现类放入import参数内</p>
-<ul>
-<li>ImportBeanDefinitionRegister:方法参数:类注解信息,类的注册信息</li>
-<li>Spring提供的FactoryBean接口:实现接口后,生成创建类的工厂,(获得的时候加上&amp;+id的方式获得工厂本身)通过实例化工厂获得</li>
-</ul>
-<h4 id="bean的生命周期"><a href="#bean的生命周期" class="headerlink" title="bean的生命周期"></a>bean的生命周期</h4><p>initmethod和destorymethod方法的注解对应:</p>
-<p>1.直接在@Bean(initmthod=’类中的方法名’,destoryMethod=’方法名’)指定初始化和销毁方法</p>
-<p>单实例:容器关闭的时候销毁bean,多实例,容器不管理,资源回收时销毁</p>
-<p>2.类实现:initializingBean接口,有一个bean创建完成后调用的方法</p>
-<pre><code>disposableBean,包含一个销毁前的执行方法</code></pre><p>3.使用JSR-250的注解</p>
-<p>@PostConstruct标注在方法上:bean创建完成,属性复制完成后的方法</p>
-<p>@PreDestroy销毁调用前的方法</p>
-<p>4.BeanPostProcessor后置处理器接口:组件初始化前后进行处理(,所有的组件)</p>
-<p>​    包含两个方法:post<strong>before</strong>(),创建好后(在任何定义的初始化调用之前如:initializingBean,initmthod等)调用</p>
-<p>​                post<strong><strong>*after *</strong></strong>会在自定初始化方法之后调用</p>
-<p>BeanPostProcessor原理:在对类的属性赋值完成之后在执行初始化方法前后分别加上两个方法,循环执行所有的XXXbeanPostProcessor,Bean的赋值,@AutoWired注解生命周期功能,等功能的底层实现创建对象前的处理</p>
-<p>@Value基本对象赋值,支持spel表达式#{}${}</p>
-<p>@PropertieSource(value={配置文件数组})配置类中加载外部配置文件 </p>
-<p>@AutoWired(required=false)可以设置非必要装配</p>
-<p>构造器,参数,方法,属性都可以使用,从容器中获取相关值</p>
-<ul>
-<li>方法上标注,会从IOC中拿出自动注入相关参数</li>
-<li>构造器上,参数也是从IOC获取</li>
-</ul>
-<p>@Primary设置首选bean(不能和qulifier同用)</p>
-<p>@Resource-JSR250@Inject-jsr330(java规范注解).</p>
-<p>Resource-JSR250不支持primary和require=false的功能</p>
-<p>Inject和autowired一样,没有require=false</p>
-<p>这些都在autowired后置处理器中进行处理</p>
-<p><strong>Aware接口</strong>,提供了使用Spring底层对象的功能</p>
-<p>要想使用注入ApplicationContext,FactoryBean等就要实现XXXAware,例如实现了ApplicationContextAware接口,就可以获得ApplicationContext原理:通过后置处理器,判断对象实现了那些Aware接口,然后在后只处理器中返回所需要的相关组件</p>
-<p>@Profile:根据当前环境动态的切换相关组件的功能</p>
-<p>标注在环境上,通过激活后使用该环境(默认使用default环境)</p>
-<p>1.直接在vm 参数上就可设置,-Dspring.profile.active=环境id</p>
-<p>2.通过applicationContext.getEnvioment.setActiveProfile设置环境,之后手动注册IOC和刷新</p>
+        <h1 id="SpringMVC断点调试"><a href="#SpringMVC断点调试" class="headerlink" title="SpringMVC断点调试"></a>SpringMVC断点调试</h1><p>为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,<br>由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现).</p>
 
       
 
@@ -323,7 +254,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/23/Spring源码深度解析/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/28/SpringMVC断点调试/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -337,17 +268,8 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/27/Spring手册笔记/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/22/2019-7-23/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/07/27/Spring手册笔记/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
@@ -375,7 +297,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spring注解汇总"><span class="toc-number">1.</span> <span class="toc-text">Spring注解汇总</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOP使用和原理"><span class="toc-number">2.</span> <span class="toc-text">AOP使用和原理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#自定义扫描规则"><span class="toc-number">2.0.1.</span> <span class="toc-text">自定义扫描规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#懒加载"><span class="toc-number">2.0.2.</span> <span class="toc-text">懒加载</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加验证注解"><span class="toc-number">2.1.</span> <span class="toc-text">添加验证注解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#组件引入注解"><span class="toc-number">2.1.1.</span> <span class="toc-text">组件引入注解</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bean的生命周期"><span class="toc-number">2.2.</span> <span class="toc-text">bean的生命周期</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringMVC断点调试"><span class="toc-number">1.</span> <span class="toc-text">SpringMVC断点调试</span></a></li></ol>
                     </div>
                 </span>
             </div>
