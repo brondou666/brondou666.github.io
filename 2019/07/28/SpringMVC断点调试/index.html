@@ -17,13 +17,13 @@
 <meta property="og:description" content=":titleSpringMVC断点调试 SpringMVC断点调试为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现). DispatcherServletSpringMVC中最重要的组件是DispatcherServlet,其中有doServi">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5Cdoservice.png">
-<meta property="og:image" content="e:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5Cimg%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C1564456731249.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5CSpringMVC%5C1564456731249.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C1564457463228.png">
-<meta property="og:image" content="e:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5Cimg%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C1564458373562.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C564458566558.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C1564458683120.png">
-<meta property="og:updated_time" content="2019-07-30T04:04:33.210Z">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5C1564456731249.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5C1564456731249.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5C1564457463228.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5C1564458373562.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5C564458566558.png">
+<meta property="og:image" content="http://yoursite.com/2019/07/28/SpringMVC断点调试/img%5C1564458683120.png">
+<meta property="og:updated_time" content="2019-07-30T11:02:20.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客">
 <meta name="twitter:description" content=":titleSpringMVC断点调试 SpringMVC断点调试为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现). DispatcherServletSpringMVC中最重要的组件是DispatcherServlet,其中有doServi">
@@ -175,21 +175,21 @@
         <p>:titleSpringMVC断点调试</p>
 <h1 id="SpringMVC断点调试"><a href="#SpringMVC断点调试" class="headerlink" title="SpringMVC断点调试"></a>SpringMVC断点调试</h1><p>为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,<br>由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现).</p>
 <h4 id="DispatcherServlet"><a href="#DispatcherServlet" class="headerlink" title="DispatcherServlet"></a>DispatcherServlet</h4><p>SpringMVC中最重要的组件是DispatcherServlet,其中有doService方法,是servlet处理请求的关键,所以从此处开始</p>
-<p><img src="img%5Cdoservice.png" alt="1564456138925"></p>
+<p><img src="/2019/07/28/SpringMVC断点调试/img%5Cdoservice.png" alt="1564456138925"></p>
 <p>可以看出,doservice 方法中主要对请求携带的参数进行了遍历添加到一个String类型变量中,并放入一个map集合中,设置IOC容器,设置国际化属性(local参数用于国际化)等内容.</p>
 <p>其中有一个方法是</p>
 <p>将请求响应对象作为参数必有猫腻,</p>
-<h5 id="doDispatch"><a href="#doDispatch" class="headerlink" title="doDispatch"></a>doDispatch</h5><p><img src="E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5Cimg%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C1564456731249.png" alt></p>
+<h5 id="doDispatch"><a href="#doDispatch" class="headerlink" title="doDispatch"></a>doDispatch</h5><p><img src="/2019/07/28/SpringMVC断点调试/img%5C1564456731249.png" alt></p>
 <p>可以看到方法本体</p>
-<p><img src="img%5CSpringMVC%5C1564456731249.png" alt="1564456731249"></p>
+<p><img src="/2019/07/28/SpringMVC断点调试/img%5C1564456731249.png" alt="1564456731249"></p>
 <p>在此方法中定义出了异常处理,视图模型对象,文件上传解析器,查找对应的执行链(HandlerIntercepter接口的实现),不为空就获得对应的适配器,其中mappedHandler.getHandler,是通过对Intercepter的各种实现,提供了获得实现该接口的各种方法,包含执行前/后方法.为下面方法的执行发挥作用,</p>
-<p><img src="img%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C1564457463228.png" alt="1564457463228"></p>
+<p><img src="/2019/07/28/SpringMVC断点调试/img%5C1564457463228.png" alt="1564457463228"></p>
 <p>刚刚讲到的getHandlerAdapter(mappedHandler.getHandler());返回一个适配器,其中包含了执行链信息,后面用到的applyPostHandler和applyPreHandle都与之相关,在者两个前后方法之间对于请求类型,日志等进行了处理,执行完前置方法后,又进行了具体的方法处理,此处留坑(<code>mv = ha.handle(processedRequest, response, mappedHandler.getHandler()</code>);为具体方法处理),随后返回一个视图模型对象,紧接着进行<code>processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);</code></p>
-<h4 id="processDispatchResult-完成View的返回"><a href="#processDispatchResult-完成View的返回" class="headerlink" title="processDispatchResult(完成View的返回)"></a>processDispatchResult(完成View的返回)</h4><p><img src="E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5Cimg%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C1564458373562.png" alt="1564458373562"></p>
+<h4 id="processDispatchResult-完成View的返回"><a href="#processDispatchResult-完成View的返回" class="headerlink" title="processDispatchResult(完成View的返回)"></a>processDispatchResult(完成View的返回)</h4><p><img src="/2019/07/28/SpringMVC断点调试/img%5C1564458373562.png" alt="1564458373562"></p>
 <p>可以看到方法内部主要做了一些关于异常的处理,最后,将主要参数传递给了<code>render()</code>方法</p>
-<p><img src="img%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C564458566558.png" alt="1564458566558"></p>
+<p><img src="/2019/07/28/SpringMVC断点调试/img%5C564458566558.png" alt="1564458566558"></p>
 <p>此处方法进行了关于视图的相关处理,以及国际化,其中画横线的重要方法</p>
-<p><img src="img%5C%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9%5C1564458683120.png" alt="1564458683120"></p>
+<p><img src="/2019/07/28/SpringMVC断点调试/img%5C1564458683120.png" alt="1564458683120"></p>
 <p>对各种视图解析器惊醒了遍历,如果可以处理就返回视图,这时候完成视图的处理</p>
 
       
@@ -293,6 +293,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/07/30/SpringMVCtest/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringMVCtest
+        
+      </div>
+    </a>
   
   
     <a href="/2019/07/27/Spring手册笔记/" id="article-nav-older" class="article-nav-link-wrap">
@@ -450,6 +459,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">源码</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
