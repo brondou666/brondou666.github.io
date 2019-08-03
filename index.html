@@ -157,6 +157,117 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ssm整合步骤总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-创建工程-加入web模块-打成war包"><a href="#1-创建工程-加入web模块-打成war包" class="headerlink" title="1.创建工程,加入web模块,打成war包"></a>1.创建工程,加入web模块,打成war包</h3><h3 id="2-引入依赖-导入相关页面和样式"><a href="#2-引入依赖-导入相关页面和样式" class="headerlink" title="2.引入依赖,导入相关页面和样式"></a>2.引入依赖,导入相关页面和样式</h3><h2 id="一-使用mybatis"><a href="#一-使用mybatis" class="headerlink" title="一, 使用mybatis"></a>一, 使用mybatis</h2><h3 id="1-创建实体类-和方法接口"><a href="#1-创建实体类-和方法接口" class="headerlink" title="1.创建实体类,和方法接口"></a>1.创建实体类,和方法接口</h3><h3 id="2-创建mybatis的配置文件mybatis-config-xml"><a href="#2-创建mybatis的配置文件mybatis-config-xml" class="headerlink" title="2.创建mybatis的配置文件mybatis-config.xml"></a>2.创建mybatis的配置文件mybatis-config.xml</h3><ul>
+<li>引入jdbc.properties外部资源文件实现解耦<br> <properties resource="jdbc.properties"></properties></li>
+<li>开启驼峰映射mapUnderscoreToCamelCase,实现表明和列名映射 <settings>
+      <!-- 设置驼峰参数 -->
+      <setting name="mapUnderscoreToCamelCase" value="true">
+  </setting></settings></li>
+<li>开启别名的包扫描,将类名作为包名全路径的别名<typealiases>
+      <!-- 配置包扫描：解决多个pojo别名问题，默认将类名作为笔名，大小写不敏感 -->
+      <package name="cn.itcast.pojo">
+  </package></typealiases></li>
+<li>配置环境(多个数据库) <environments default="development">
+      <!-- 配置环境,id:环境的唯一标识 -->
+      <environment id="development">
+          <!-- 事务管理器，type:使用jdbc的事务管理器 -->
+          <transactionmanager type="JDBC">
+          <!-- 数据源，type:池类型的数据源 -->
+          <datasource type="POOLED">
+              <!-- 配置连接信息 -->
+              <property name="driver" value="${jdbc.driverClass}">
+              <property name="url" value="${jdbc.url}">
+              <property name="username" value="${jdbc.username}">
+              <property name="password" value="${jdbc.password}">
+          </property></property></property></property></datasource>
+      </transactionmanager></environment>
+  </environments>
+### 将mapper.xml映射文件引入,`此处一定要注意mapper.xml的名称空间!!!!!`
+### 引入log4j日志文件和jdbc.properties配置文件到resources文件中
+## Spring整合mybatis
+spring整合mybatis其实就是使用springIOC容器创建出来mybati的相关配置,也就需要将mabatis的配置文件放到spring中用来初始化mybatis
+### 1.引入mybatis和spring整合的jar包
+  <groupid>org.mybatis</groupid>其中有一个SqlSessionBean可以用来创建sqlsession对象,通过getbean对象
+这说明需要放入</li>
+<li>spring的IOC中jdbc的配置文件,</li>
+<li>sqlsessionFactorybean的创建(包含着mybatis的文件)</li>
+<li>数据源的创建<br><code>这些工作都交给springIOC容器创建</code><h3 id="2-放入jdbc-properties配置文件到ioc容器"><a href="#2-放入jdbc-properties配置文件到ioc容器" class="headerlink" title="2.放入jdbc.properties配置文件到ioc容器,"></a>2.放入jdbc.properties配置文件到ioc容器,</h3><h3 id="3-加入注解扫描"><a href="#3-加入注解扫描" class="headerlink" title="3.加入注解扫描"></a>3.加入注解扫描</h3><h3 id="4-加入SqlSessionFacoryBean对象-并且注入相关的的mybatis-config-xml配置文件"><a href="#4-加入SqlSessionFacoryBean对象-并且注入相关的的mybatis-config-xml配置文件" class="headerlink" title="4,加入SqlSessionFacoryBean对象,并且注入相关的的mybatis-config.xml配置文件"></a>4,加入SqlSessionFacoryBean对象,并且注入相关的的mybatis-config.xml配置文件</h3></li>
+<li>bean对象的别名扫描包</li>
+<li>引入相关的mapper.xml文件</li>
+<li>配置数据源<h3 id="5-在mybatis文件中删除相关的配置-但是要留下驼峰映射"><a href="#5-在mybatis文件中删除相关的配置-但是要留下驼峰映射" class="headerlink" title="5.在mybatis文件中删除相关的配置,但是要留下驼峰映射"></a>5.在mybatis文件中删除相关的配置,但是要留下驼峰映射</h3><h3 id="6-将mapper接口放入到IOC容器中"><a href="#6-将mapper接口放入到IOC容器中" class="headerlink" title="6.将mapper接口放入到IOC容器中"></a>6.将mapper接口放入到IOC容器中</h3><bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScannerConfigurer">
+      <property name="basePackage" value="com.itcast.ssm.mapper"></property>
+  </bean>不用指定sqlsession了,内部以完成
+
+</li>
+</ul>
+<h2 id="SpringMVC和Spring整合"><a href="#SpringMVC和Spring整合" class="headerlink" title="SpringMVC和Spring整合"></a>SpringMVC和Spring整合</h2><p>springmvc有什么可以整合的?</p>
+<h3 id="1-创建springmvc-config-xml"><a href="#1-创建springmvc-config-xml" class="headerlink" title="1.创建springmvc-config.xml"></a>1.创建springmvc-config.xml</h3><h3 id="2-配置web-xml文件"><a href="#2-配置web-xml文件" class="headerlink" title="2.配置web.xml文件"></a>2.配置web.xml文件</h3><ul>
+<li><p>配置乱码过滤器,解决乱码post请求</p>
+</li>
+<li><p>配置上下文监听器,context-param设置为applicationContext.xml,用来初始化IOC容器的,它要指向spring本身配置文件</p>
+</li>
+<li><p>配置DispacherServlet将启动级别设置为1,将springmvc的initparm设置为springmvc-config.xml,指向springmvc的配置文件</p>
+<h3 id="3-配置springmvc的配置文件"><a href="#3-配置springmvc的配置文件" class="headerlink" title="3.配置springmvc的配置文件"></a>3.配置springmvc的配置文件</h3></li>
+<li><p>注解扫描,解决controler的注解</p>
+</li>
+<li><p>注解驱动,解决返回json时使用@RequestBody和@ResponseBody的消息转换器的相关问题</p>
+</li>
+<li><p>视图解析器,将逻辑视图转换为物理视图InternalResourceViewResolver</p>
+<h3 id="注意视图解析器不能配置id-要不然会因此替代通过类型遍历多种解析器的规则变为用id查找"><a href="#注意视图解析器不能配置id-要不然会因此替代通过类型遍历多种解析器的规则变为用id查找" class="headerlink" title="注意视图解析器不能配置id,要不然会因此替代通过类型遍历多种解析器的规则变为用id查找"></a>注意视图解析器不能配置id,要不然会因此替代通过类型遍历多种解析器的规则变为用id查找</h3></li>
+<li><p>放行静态的配置</p>
+ <!--放行静态资源-->
+<p>  <a href="mvc:default-servlet-handler" target="_blank" rel="noopener">mvc:default-servlet-handler</a></p>
+</li>
+</ul>
+<p><code>接口方法最好加上@Param注解</code></p>
+<p>聚合工程要用classpath*:来加载多层结构的配置文件</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/31/ssm整合步骤总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SpringMVCtest" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

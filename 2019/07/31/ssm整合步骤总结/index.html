@@ -6,37 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>SpringMVCtest | 个人博客</title>
+  <title>个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SpringMVC断点调试为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现). DispatcherServletSpringMVC中最重要的组件是DispatcherServlet,其中有doService方法,是servlet处理请求的关键">
-<meta name="keywords" content="源码">
+  <meta name="description" content="1.创建工程,加入web模块,打成war包2.引入依赖,导入相关页面和样式一, 使用mybatis1.创建实体类,和方法接口2.创建mybatis的配置文件mybatis-config.xml 引入jdbc.properties外部资源文件实现解耦  开启驼峰映射mapUnderscoreToCamelCase,实现表明和列名映射                   开启别名的包扫描,将类名作为包">
+<meta name="keywords" content="JAVA,J2EE,Spring,后端,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringMVCtest">
-<meta property="og:url" content="http://yoursite.com/2019/07/30/SpringMVCtest/index.html">
+<meta property="og:title" content="个人博客">
+<meta property="og:url" content="http://yoursite.com/2019/07/31/ssm整合步骤总结/index.html">
 <meta property="og:site_name" content="个人博客">
-<meta property="og:description" content="SpringMVC断点调试为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现). DispatcherServletSpringMVC中最重要的组件是DispatcherServlet,其中有doService方法,是servlet处理请求的关键">
+<meta property="og:description" content="1.创建工程,加入web模块,打成war包2.引入依赖,导入相关页面和样式一, 使用mybatis1.创建实体类,和方法接口2.创建mybatis的配置文件mybatis-config.xml 引入jdbc.properties外部资源文件实现解耦  开启驼峰映射mapUnderscoreToCamelCase,实现表明和列名映射                   开启别名的包扫描,将类名作为包">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5Cdoservice.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564456731249.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564456731249.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564457463228.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564458373562.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C564458566558.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564458683120.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/30/eJw0fI.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/30/eJwr1P.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/30/eJwwtA.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/30/eJwdkd.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/30/eJwUTH.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/30/eJwDpt.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/30/eJws6f.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/30/eJwyX8.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/07/30/eJwcnS.png">
-<meta property="og:updated_time" content="2019-07-30T11:16:43.810Z">
+<meta property="og:updated_time" content="2019-08-01T12:32:05.832Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringMVCtest">
-<meta name="twitter:description" content="SpringMVC断点调试为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现). DispatcherServletSpringMVC中最重要的组件是DispatcherServlet,其中有doService方法,是servlet处理请求的关键">
-<meta name="twitter:image" content="http://yoursite.com/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5Cdoservice.png">
+<meta name="twitter:title" content="个人博客">
+<meta name="twitter:description" content="1.创建工程,加入web模块,打成war包2.引入依赖,导入相关页面和样式一, 使用mybatis1.创建实体类,和方法接口2.创建mybatis的配置文件mybatis-config.xml 引入jdbc.properties外部资源文件实现解耦  开启驼峰映射mapUnderscoreToCamelCase,实现表明和列名映射                   开启别名的包扫描,将类名作为包">
   
     <link rel="alternative" href="/atom.xml" title="个人博客" type="application/atom+xml">
   
@@ -176,45 +159,75 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-SpringMVCtest" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ssm整合步骤总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      SpringMVCtest
-    </h1>
-  
-
-        
-        <a href="/2019/07/30/SpringMVCtest/" class="archive-article-date">
-  	<time datetime="2019-07-30T10:28:31.661Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-30</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="SpringMVC断点调试"><a href="#SpringMVC断点调试" class="headerlink" title="SpringMVC断点调试"></a>SpringMVC断点调试</h1><p>为什么tomcat和springmvc可以结合起来呢,最最核心的原因是他们都是基于Servlet规范的,<br>由于Servlet规范,他们可以互相通信(服务器和SpringMVC的结合在debug时将会简单体现).</p>
-<h4 id="DispatcherServlet"><a href="#DispatcherServlet" class="headerlink" title="DispatcherServlet"></a>DispatcherServlet</h4><p>SpringMVC中最重要的组件是DispatcherServlet,其中有doService方法,是servlet处理请求的关键,所以从此处开始</p>
-<p><img src="/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5Cdoservice.png" alt></p>
-<p>可以看出,doservice 方法中主要对请求携带的参数进行了遍历添加到一个String类型变量中,并放入一个map集合中,设置IOC容器,设置国际化属性(local参数用于国际化)等内容.</p>
-<p>其中有一个方法是</p>
-<p>将请求响应对象作为参数必有猫腻,</p>
-<h5 id="doDispatch"><a href="#doDispatch" class="headerlink" title="doDispatch"></a>doDispatch</h5><p><img src="/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564456731249.png" alt></p>
-<p>可以看到方法本体</p>
-<p><img src="/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564456731249.png" alt="1564456731249"></p>
-<p>在此方法中定义出了异常处理,视图模型对象,文件上传解析器,查找对应的执行链(HandlerIntercepter接口的实现),不为空就获得对应的适配器,其中mappedHandler.getHandler,是通过对Intercepter的各种实现,提供了获得实现该接口的各种方法,包含执行前/后方法.为下面方法的执行发挥作用,</p>
-<p><img src="/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564457463228.png" alt="1564457463228"></p>
-<p>刚刚讲到的getHandlerAdapter(mappedHandler.getHandler());返回一个适配器,其中包含了执行链信息,后面用到的applyPostHandler和applyPreHandle都与之相关,在者两个前后方法之间对于请求类型,日志等进行了处理,执行完前置方法后,又进行了具体的方法处理,此处留坑(<code>mv = ha.handle(processedRequest, response, mappedHandler.getHandler()</code>);为具体方法处理),随后返回一个视图模型对象,紧接着进行<code>processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);</code></p>
-<h4 id="processDispatchResult-完成View的返回"><a href="#processDispatchResult-完成View的返回" class="headerlink" title="processDispatchResult(完成View的返回)"></a>processDispatchResult(完成View的返回)</h4><p><img src="/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564458373562.png" alt="1564458373562"></p>
-<p>可以看到方法内部主要做了一些关于异常的处理,最后,将主要参数传递给了<code>render()</code>方法</p>
-<p><img src="/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C564458566558.png" alt="1564458566558"></p>
-<p>此处方法进行了关于视图的相关处理,以及国际化,其中画横线的重要方法</p>
-<p><img src="/2019/07/30/SpringMVCtest/E:%5CMyBlog%5Cmain%5Csrc%5Csource_posts%5CSpringMVCtest%5C1564458683120.png" alt="1564458683120"></p>
-<p>对各种视图解析器惊醒了遍历,如果可以处理就返回视图,这时候完成视图的处理</p>
-<p><a href="https://imgchr.com/i/eJw0fI" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/30/eJw0fI.png" alt="eJw0fI.png"></a><br><a href="https://imgchr.com/i/eJwr1P" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/30/eJwr1P.png" alt="eJwr1P.png"></a><br><a href="https://imgchr.com/i/eJwwtA" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/30/eJwwtA.png" alt="eJwwtA.png"></a><br><a href="https://imgchr.com/i/eJwdkd" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/30/eJwdkd.png" alt="eJwdkd.png"></a><br><a href="https://imgchr.com/i/eJwUTH" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/30/eJwUTH.png" alt="eJwUTH.png"></a><br><a href="https://imgchr.com/i/eJwDpt" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/30/eJwDpt.png" alt="eJwDpt.png"></a><br><a href="https://imgchr.com/i/eJws6f" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/30/eJws6f.png" alt="eJws6f.png"></a><br><a href="https://imgchr.com/i/eJwyX8" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/30/eJwyX8.png" alt="eJwyX8.png"></a><br><a href="https://imgchr.com/i/eJwcnS" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/07/30/eJwcnS.png" alt="eJwcnS.png"></a></p>
+        <h3 id="1-创建工程-加入web模块-打成war包"><a href="#1-创建工程-加入web模块-打成war包" class="headerlink" title="1.创建工程,加入web模块,打成war包"></a>1.创建工程,加入web模块,打成war包</h3><h3 id="2-引入依赖-导入相关页面和样式"><a href="#2-引入依赖-导入相关页面和样式" class="headerlink" title="2.引入依赖,导入相关页面和样式"></a>2.引入依赖,导入相关页面和样式</h3><h2 id="一-使用mybatis"><a href="#一-使用mybatis" class="headerlink" title="一, 使用mybatis"></a>一, 使用mybatis</h2><h3 id="1-创建实体类-和方法接口"><a href="#1-创建实体类-和方法接口" class="headerlink" title="1.创建实体类,和方法接口"></a>1.创建实体类,和方法接口</h3><h3 id="2-创建mybatis的配置文件mybatis-config-xml"><a href="#2-创建mybatis的配置文件mybatis-config-xml" class="headerlink" title="2.创建mybatis的配置文件mybatis-config.xml"></a>2.创建mybatis的配置文件mybatis-config.xml</h3><ul>
+<li>引入jdbc.properties外部资源文件实现解耦<br> <properties resource="jdbc.properties"></properties></li>
+<li>开启驼峰映射mapUnderscoreToCamelCase,实现表明和列名映射 <settings>
+      <!-- 设置驼峰参数 -->
+      <setting name="mapUnderscoreToCamelCase" value="true">
+  </setting></settings></li>
+<li>开启别名的包扫描,将类名作为包名全路径的别名<typealiases>
+      <!-- 配置包扫描：解决多个pojo别名问题，默认将类名作为笔名，大小写不敏感 -->
+      <package name="cn.itcast.pojo">
+  </package></typealiases></li>
+<li>配置环境(多个数据库) <environments default="development">
+      <!-- 配置环境,id:环境的唯一标识 -->
+      <environment id="development">
+          <!-- 事务管理器，type:使用jdbc的事务管理器 -->
+          <transactionmanager type="JDBC">
+          <!-- 数据源，type:池类型的数据源 -->
+          <datasource type="POOLED">
+              <!-- 配置连接信息 -->
+              <property name="driver" value="${jdbc.driverClass}">
+              <property name="url" value="${jdbc.url}">
+              <property name="username" value="${jdbc.username}">
+              <property name="password" value="${jdbc.password}">
+          </property></property></property></property></datasource>
+      </transactionmanager></environment>
+  </environments>
+### 将mapper.xml映射文件引入,`此处一定要注意mapper.xml的名称空间!!!!!`
+### 引入log4j日志文件和jdbc.properties配置文件到resources文件中
+## Spring整合mybatis
+spring整合mybatis其实就是使用springIOC容器创建出来mybati的相关配置,也就需要将mabatis的配置文件放到spring中用来初始化mybatis
+### 1.引入mybatis和spring整合的jar包
+  <groupid>org.mybatis</groupid>其中有一个SqlSessionBean可以用来创建sqlsession对象,通过getbean对象
+这说明需要放入</li>
+<li>spring的IOC中jdbc的配置文件,</li>
+<li>sqlsessionFactorybean的创建(包含着mybatis的文件)</li>
+<li>数据源的创建<br><code>这些工作都交给springIOC容器创建</code><h3 id="2-放入jdbc-properties配置文件到ioc容器"><a href="#2-放入jdbc-properties配置文件到ioc容器" class="headerlink" title="2.放入jdbc.properties配置文件到ioc容器,"></a>2.放入jdbc.properties配置文件到ioc容器,</h3><h3 id="3-加入注解扫描"><a href="#3-加入注解扫描" class="headerlink" title="3.加入注解扫描"></a>3.加入注解扫描</h3><h3 id="4-加入SqlSessionFacoryBean对象-并且注入相关的的mybatis-config-xml配置文件"><a href="#4-加入SqlSessionFacoryBean对象-并且注入相关的的mybatis-config-xml配置文件" class="headerlink" title="4,加入SqlSessionFacoryBean对象,并且注入相关的的mybatis-config.xml配置文件"></a>4,加入SqlSessionFacoryBean对象,并且注入相关的的mybatis-config.xml配置文件</h3></li>
+<li>bean对象的别名扫描包</li>
+<li>引入相关的mapper.xml文件</li>
+<li>配置数据源<h3 id="5-在mybatis文件中删除相关的配置-但是要留下驼峰映射"><a href="#5-在mybatis文件中删除相关的配置-但是要留下驼峰映射" class="headerlink" title="5.在mybatis文件中删除相关的配置,但是要留下驼峰映射"></a>5.在mybatis文件中删除相关的配置,但是要留下驼峰映射</h3><h3 id="6-将mapper接口放入到IOC容器中"><a href="#6-将mapper接口放入到IOC容器中" class="headerlink" title="6.将mapper接口放入到IOC容器中"></a>6.将mapper接口放入到IOC容器中</h3><bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScannerConfigurer">
+      <property name="basePackage" value="com.itcast.ssm.mapper"></property>
+  </bean>不用指定sqlsession了,内部以完成
+
+</li>
+</ul>
+<h2 id="SpringMVC和Spring整合"><a href="#SpringMVC和Spring整合" class="headerlink" title="SpringMVC和Spring整合"></a>SpringMVC和Spring整合</h2><p>springmvc有什么可以整合的?</p>
+<h3 id="1-创建springmvc-config-xml"><a href="#1-创建springmvc-config-xml" class="headerlink" title="1.创建springmvc-config.xml"></a>1.创建springmvc-config.xml</h3><h3 id="2-配置web-xml文件"><a href="#2-配置web-xml文件" class="headerlink" title="2.配置web.xml文件"></a>2.配置web.xml文件</h3><ul>
+<li><p>配置乱码过滤器,解决乱码post请求</p>
+</li>
+<li><p>配置上下文监听器,context-param设置为applicationContext.xml,用来初始化IOC容器的,它要指向spring本身配置文件</p>
+</li>
+<li><p>配置DispacherServlet将启动级别设置为1,将springmvc的initparm设置为springmvc-config.xml,指向springmvc的配置文件</p>
+<h3 id="3-配置springmvc的配置文件"><a href="#3-配置springmvc的配置文件" class="headerlink" title="3.配置springmvc的配置文件"></a>3.配置springmvc的配置文件</h3></li>
+<li><p>注解扫描,解决controler的注解</p>
+</li>
+<li><p>注解驱动,解决返回json时使用@RequestBody和@ResponseBody的消息转换器的相关问题</p>
+</li>
+<li><p>视图解析器,将逻辑视图转换为物理视图InternalResourceViewResolver</p>
+<h3 id="注意视图解析器不能配置id-要不然会因此替代通过类型遍历多种解析器的规则变为用id查找"><a href="#注意视图解析器不能配置id-要不然会因此替代通过类型遍历多种解析器的规则变为用id查找" class="headerlink" title="注意视图解析器不能配置id,要不然会因此替代通过类型遍历多种解析器的规则变为用id查找"></a>注意视图解析器不能配置id,要不然会因此替代通过类型遍历多种解析器的规则变为用id查找</h3></li>
+<li><p>放行静态的配置</p>
+ <!--放行静态资源-->
+<p>  <a href="mvc:default-servlet-handler" target="_blank" rel="noopener">mvc:default-servlet-handler</a></p>
+</li>
+</ul>
+<p><code>接口方法最好加上@Param注解</code></p>
+<p>聚合工程要用classpath*:来加载多层结构的配置文件</p>
 
       
 
@@ -254,17 +267,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">源码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -315,7 +317,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/30/SpringMVCtest/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/31/ssm整合步骤总结/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -329,18 +331,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/31/ssm整合步骤总结/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/07/28/SpringMVC断点调试/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+    <a href="/2019/07/30/SpringMVCtest/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringMVCtest</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -367,7 +360,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SpringMVC断点调试"><span class="toc-number">1.</span> <span class="toc-text">SpringMVC断点调试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DispatcherServlet"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">DispatcherServlet</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#doDispatch"><span class="toc-number">1.0.0.1.1.</span> <span class="toc-text">doDispatch</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#processDispatchResult-完成View的返回"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">processDispatchResult(完成View的返回)</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建工程-加入web模块-打成war包"><span class="toc-number">1.</span> <span class="toc-text">1.创建工程,加入web模块,打成war包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-引入依赖-导入相关页面和样式"><span class="toc-number">2.</span> <span class="toc-text">2.引入依赖,导入相关页面和样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一-使用mybatis"><span class="toc-number"></span> <span class="toc-text">一, 使用mybatis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建实体类-和方法接口"><span class="toc-number">1.</span> <span class="toc-text">1.创建实体类,和方法接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-创建mybatis的配置文件mybatis-config-xml"><span class="toc-number">2.</span> <span class="toc-text">2.创建mybatis的配置文件mybatis-config.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-放入jdbc-properties配置文件到ioc容器"><span class="toc-number">3.</span> <span class="toc-text">2.放入jdbc.properties配置文件到ioc容器,</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-加入注解扫描"><span class="toc-number">4.</span> <span class="toc-text">3.加入注解扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-加入SqlSessionFacoryBean对象-并且注入相关的的mybatis-config-xml配置文件"><span class="toc-number">5.</span> <span class="toc-text">4,加入SqlSessionFacoryBean对象,并且注入相关的的mybatis-config.xml配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-在mybatis文件中删除相关的配置-但是要留下驼峰映射"><span class="toc-number">6.</span> <span class="toc-text">5.在mybatis文件中删除相关的配置,但是要留下驼峰映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-将mapper接口放入到IOC容器中"><span class="toc-number">7.</span> <span class="toc-text">6.将mapper接口放入到IOC容器中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC和Spring整合"><span class="toc-number"></span> <span class="toc-text">SpringMVC和Spring整合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-创建springmvc-config-xml"><span class="toc-number">1.</span> <span class="toc-text">1.创建springmvc-config.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-配置web-xml文件"><span class="toc-number">2.</span> <span class="toc-text">2.配置web.xml文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置springmvc的配置文件"><span class="toc-number">3.</span> <span class="toc-text">3.配置springmvc的配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意视图解析器不能配置id-要不然会因此替代通过类型遍历多种解析器的规则变为用id查找"><span class="toc-number">4.</span> <span class="toc-text">注意视图解析器不能配置id,要不然会因此替代通过类型遍历多种解析器的规则变为用id查找</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -392,7 +385,7 @@
 <script src="https://billts.site/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/07/30/SpringMVCtest/",
+  id: "http://yoursite.com/2019/07/31/ssm整合步骤总结/",
   owner: 'brondou666',
   repo: 'brondou666.github.io',
   oauth: {
